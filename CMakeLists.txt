@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.6)
+project(ProgressBar)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+
+set(SOURCE_FILES
+        CMakeLists.txt
+        Display.h
+        FileManager.cpp
+        FileManager.h
+        GUIBar.cpp
+        GUIBar.h
+        main.cpp
+        Observer.h
+        Subject.h)
+
+add_executable(ProgressBar ${SOURCE_FILES})
+set(CURSES_NEED_NCURSES,TRUE)
+find_package(Curses REQUIRED)
+include_directories(${CURSES_INCLUDE_DIRS})
+target_link_libraries(ProgressBar ${CURSES_LIBRARIES})
