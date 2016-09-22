@@ -6,14 +6,15 @@
 
 
 GUIBar::GUIBar(FileManager *s) : subject(s), upl(0) {
-    //inizializzo la finestra di caricamento
+
+    //inizializzo la finestra di caricamento..
 
     initscr();
     curs_set(0);
     noecho();
     progressbar = newwin(8, 112, 15, 20);
-}
 
+}
 
 GUIBar::~GUIBar() {
     detach();
@@ -26,6 +27,8 @@ void GUIBar::draw() {
 
     box(progressbar, ACS_VLINE, ACS_DIAMOND);
     mvwprintw(progressbar, 1, 3, "LOADING....");
+
+    //simulo un ritardo nell'agg.percentuale dovuto al caricamento..
 
     wtimeout(progressbar, 200);
     wattron(progressbar, A_STANDOUT);
@@ -70,3 +73,9 @@ void GUIBar::attach() {
 void GUIBar::detach() {
     subject->unsubscribe(this);
 }
+
+int GUIBar::getUpl() const {
+    return upl;
+}
+
+

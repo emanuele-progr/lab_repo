@@ -14,7 +14,13 @@ set(SOURCE_FILES
         Observer.h
         Subject.h)
 
-add_executable(ProgressBar ${SOURCE_FILES})
+add_subdirectory(test)
+set(SOURCE_FILE FileManager.h FileManager.cpp GUIBar.h GUIBar.cpp)
+add_executable(ProgressBar main.cpp)
+add_library(core ${SOURCE_FILES})
+target_link_libraries(ProgressBar core)
+
+
 set(CURSES_NEED_NCURSES,TRUE)
 find_package(Curses REQUIRED)
 include_directories(${CURSES_INCLUDE_DIRS})

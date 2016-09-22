@@ -25,6 +25,7 @@ public:
 
     virtual void detach() override;
 
+    int getUpl() const;
 
 private:
     FileManager *subject;

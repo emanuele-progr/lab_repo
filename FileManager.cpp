@@ -5,7 +5,7 @@
 #include <iostream>
 #include "FileManager.h"
 
-FileManager::FileManager() : fileUploaded(0) {
+FileManager::FileManager() : fileLoaded(0) {
 
 }
 
@@ -14,11 +14,15 @@ FileManager::~FileManager() {
 
 }
 
-void FileManager::uploadFiles(int numFiles) {
-    for (int i = 0; i < numFiles; i++) {
-        fileUploaded++;
-        int percentage = (fileUploaded * 100) / numFiles;
-        notify(percentage);
+void FileManager::loadFiles(int numFiles) {
+    if (numFiles < 0) {
+        std::cout << "Error:Invalid file's number" << std::endl;
+    } else {
+        for (int i = 0; i < numFiles; i++) {
+            fileLoaded++;
+            int percentage = (fileLoaded * 100) / numFiles;
+            notify(percentage);
+        }
     }
 }
 
@@ -35,4 +39,12 @@ void FileManager::notify(int percentage) {
     for (auto itr = std::begin(observers); itr != std::end(observers); itr++) {
         (*itr)->update(percentage);
     }
+}
+
+int FileManager::getFileLoaded() const {
+    return fileLoaded;
+}
+
+const std::list<Observer *> &FileManager::getObservers() const {
+    return observers;
 }

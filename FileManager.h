@@ -17,7 +17,7 @@ public:
 
     virtual ~FileManager();
 
-    void uploadFiles(int numFiles);
+    void loadFiles(int numFiles);
 
     virtual void subscribe(Observer *o) override;
 
@@ -25,10 +25,14 @@ public:
 
     virtual void notify(int percentage) override;
 
+    int getFileLoaded() const;
+
+    const std::list<Observer *> &getObservers() const;
+
 private:
 
     std::list<Observer *> observers;
-    int fileUploaded;
+    int fileLoaded;
 };
 
 

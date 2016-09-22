@@ -8,7 +8,7 @@ int main() {
     FileManager *ptr = new FileManager;
     GUIBar *ptr2 = new GUIBar(ptr);
     ptr2->attach();
-    ptr->uploadFiles(100);
+    ptr->loadFiles(100);
 
     return 0;
 }
