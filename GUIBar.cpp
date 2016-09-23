@@ -14,6 +14,7 @@ GUIBar::GUIBar(FileManager *s) : subject(s), upl(0) {
     noecho();
     progressbar = newwin(8, 112, 15, 20);
 
+
 }
 
 GUIBar::~GUIBar() {
@@ -23,7 +24,6 @@ GUIBar::~GUIBar() {
 
 
 void GUIBar::draw() {
-
 
     box(progressbar, ACS_VLINE, ACS_DIAMOND);
     mvwprintw(progressbar, 1, 3, "LOADING....");

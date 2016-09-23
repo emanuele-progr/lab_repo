@@ -20,6 +20,9 @@ void FileManager::loadFiles(int numFiles) {
     } else {
         for (int i = 0; i < numFiles; i++) {
             fileLoaded++;
+
+            //simulo file caricati con dimensione uguale..
+
             int percentage = (fileLoaded * 100) / numFiles;
             notify(percentage);
         }

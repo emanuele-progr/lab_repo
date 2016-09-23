@@ -31,8 +31,6 @@ private:
     FileManager *subject;
     int upl;
     WINDOW *progressbar;
-
-
 };
 
 
