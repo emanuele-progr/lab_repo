@@ -13,9 +13,11 @@
       <sourceFolder url="file://$MODULE_DIR$/test/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/runAllTests.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/FileManager.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/GUIProgressBar.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/GUIBar.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Display.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/GUIProgressBar.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Observer.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/GUIBar.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Subject.h" isTestSource="false" />

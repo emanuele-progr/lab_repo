@@ -13,7 +13,8 @@
 
 class GUIBar : public Observer, public Display {
 public:
-    GUIBar(FileManager *s);
+
+    GUIBar();
 
     virtual ~GUIBar();
 
@@ -27,10 +28,10 @@ public:
 
     int getUpl() const;
 
+    void setUpl(int upl);
+
 private:
-    FileManager *subject;
     int upl;
-    WINDOW *progressbar;
 };
 
 
