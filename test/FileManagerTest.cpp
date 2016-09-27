@@ -5,6 +5,7 @@
 #include "gtest/gtest.h"
 #include "../FileManager.h"
 #include "../GUIBar.h"
+#include "../GUIProgressBar.h"
 
 TEST(FileManagerTest, DefaultConstructor) {
     FileManager f;
@@ -24,7 +25,7 @@ TEST(FileManagerTest, TestLoadFiles) {
 
 TEST(FileManagerTest, TestSubscribe) {
     FileManager f;
-    GUIBar *ptr;
+    GUIProgressBar *ptr;
     f.subscribe(ptr);
     ASSERT_EQ(1, f.getObservers().size());
     f.unsubscribe(ptr);

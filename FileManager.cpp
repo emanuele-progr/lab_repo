@@ -11,7 +11,6 @@ FileManager::FileManager() : fileLoaded(0) {
 
 FileManager::~FileManager() {
 
-
 }
 
 void FileManager::loadFiles(int numFiles) {
