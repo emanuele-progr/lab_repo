@@ -15,6 +15,7 @@ GUIBar::~GUIBar() {
 
 
 void GUIBar::draw() {
+    //uso la classe derivata per il display...
 
 }
 
