@@ -3,9 +3,9 @@
 #include "GUIProgressBar.h"
 
 void Loading(FileManager *ptr) {
-    ResourceFile *files[10];
-    files[0] = new ResourceFile("Resource_001", 5);
-    files[1] = new ResourceFile("Resource_009", 8);
+    ResourceFile *files[14];
+    files[0] = new ResourceFile("Resource_001", 2);
+    files[1] = new ResourceFile("Resource_009", 4);
     files[2] = new ResourceFile("Resource_021", 3);
     files[3] = new ResourceFile("Resource_054", 2);
     files[4] = new ResourceFile("Resource_086", 1);
@@ -15,6 +15,12 @@ void Loading(FileManager *ptr) {
     files[8] = new ResourceFile("Resource_172", 4);
     files[9] = new ResourceFile("Resource_179", 7);
     files[10] = new ResourceFile("Resource_199", 2);
+    files[11] = new ResourceFile("Resource_208", 1);
+    files[12] = new ResourceFile("Resource_221", 3);
+    files[13] = new ResourceFile("Resource_240", 4);
+    files[14] = new ResourceFile("Resource_253", 1);
+    files[15] = new ResourceFile("Resource_261", 3);
+    files[16] = new ResourceFile("Resource_269", 3);
     ptr->storeFiles(files[0]);
     ptr->storeFiles(files[1]);
     ptr->storeFiles(files[2]);
@@ -26,6 +32,12 @@ void Loading(FileManager *ptr) {
     ptr->storeFiles(files[8]);
     ptr->storeFiles(files[9]);
     ptr->storeFiles(files[10]);
+    ptr->storeFiles(files[11]);
+    ptr->storeFiles(files[12]);
+    ptr->storeFiles(files[13]);
+    ptr->storeFiles(files[14]);
+    ptr->storeFiles(files[15]);
+    ptr->storeFiles(files[16]);
     ptr->loadFiles();
 }
 
