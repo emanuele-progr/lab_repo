@@ -50,5 +50,4 @@ TEST_F(FileManagerSuite, FileManagerSuite_LoadTest_Test) {
     m.loadFiles();
     ASSERT_EQ(2, m.getFileLoaded());
     ASSERT_EQ(8, m.getBytesLoaded());
-
 }
