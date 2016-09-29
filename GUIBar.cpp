@@ -6,7 +6,9 @@
 
 
 GUIBar::GUIBar() {
-    upl = 0;
+    bUpl = 0;
+    fUpl = 0;
+    currentName = "NoFile";
 }
 
 GUIBar::~GUIBar() {
@@ -19,8 +21,10 @@ void GUIBar::draw() {
 
 }
 
-void GUIBar::update(int up) {
-    upl = up;
+void GUIBar::update(int bUp, int fUp, std::string fileName) {
+    bUpl = bUp;
+    fUpl = fUp;
+    currentName = fileName;
     draw();
 }
 
@@ -29,12 +33,32 @@ void GUIBar::attach() {}
 void GUIBar::detach() {
 }
 
-int GUIBar::getUpl() const {
-    return upl;
+int GUIBar::getBUpl() const {
+    return bUpl;
 }
 
-void GUIBar::setUpl(int upl) {
-    GUIBar::upl = upl;
+void GUIBar::setBUpl(int bUpl) {
+    GUIBar::bUpl = bUpl;
 }
+
+int GUIBar::getFUpl() const {
+    return fUpl;
+}
+
+void GUIBar::setFUpl(int fUpl) {
+    GUIBar::fUpl = fUpl;
+}
+
+void GUIBar::setCurrentName(const std::string &currentName) {
+    GUIBar::currentName = currentName;
+}
+
+const std::string &GUIBar::getCurrentName() const {
+    return currentName;
+}
+
+
+
+
 
 

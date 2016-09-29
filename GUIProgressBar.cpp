@@ -2,17 +2,20 @@
 // Created by emanuele on 27/09/16.
 //
 #include <ncurses.h>
+#include <string>
 #include "GUIProgressBar.h"
 
 
-GUIProgressBar::GUIProgressBar(FileManager *f) : subject(f) {
+GUIProgressBar::GUIProgressBar(FileManager *s) : subject(s) {
     //inizializzo la finestra per il caricamento...
     initscr();
     curs_set(0);
     noecho();
     progressbar = newwin(8, 112, 15, 20);
 
-    setUpl(0);
+    setBUpl(0);
+    setFUpl(0);
+    setCurrentName("NoFile");
 
 };
 
@@ -29,23 +32,25 @@ void GUIProgressBar::draw() {
 
     wtimeout(progressbar, 300);
     wattron(progressbar, A_STANDOUT);
-    if (GUIBar::getUpl() < 101) {
-        for (int i = 0; i < GUIBar::getUpl(); i++) {
+    if (GUIBar::getBUpl() < 101) {
+        for (int i = 0; i < GUIBar::getBUpl(); i++) {
             mvwprintw(progressbar, 3, i + 6, "", 97);
             waddch(progressbar, 97 | A_ALTCHARSET);
         }
+
         wattroff(progressbar, A_STANDOUT);
-        mvwprintw(progressbar, 5, 6, "%d %%", GUIBar::getUpl());
+        mvwprintw(progressbar, 5, 6, "%d %%", GUIBar::getBUpl());
+        mvwprintw(progressbar, 5, 15, "%d %%", GUIBar::getFUpl());
 
-        //simulo il display dei file..
+        // display dei file..
 
-        mvwprintw(progressbar, 5, 89, "Resource_file_%d", (GUIBar::getUpl() * 3) + 1);
+        mvwprintw(progressbar, 5, 89, "%s", GUIBar::getCurrentName().c_str());
         wrefresh(progressbar);
         wgetch(progressbar);
 
     }
 
-    if (GUIBar::getUpl() == 100) {
+    if (GUIBar::getBUpl() == 100) {
         mvwprintw(progressbar, 6, 40, "LOADING COMPLETE!!!");
         mvprintw(25, 57, "Press any key to continue");
         wrefresh(progressbar);
@@ -63,3 +68,4 @@ void GUIProgressBar::attach() {
 void GUIProgressBar::detach() {
     subject->unsubscribe(this);
 }
+

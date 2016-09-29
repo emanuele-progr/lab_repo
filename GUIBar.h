@@ -5,10 +5,12 @@
 #ifndef PRIMO_GUIBAR_H
 #define PRIMO_GUIBAR_H
 
+#include <string.h>
 #include <ncurses.h>
 #include "Observer.h"
 #include "Display.h"
 #include "FileManager.h"
+
 
 
 class GUIBar : public Observer, public Display {
@@ -20,18 +22,27 @@ public:
 
     virtual void draw() override;
 
-    virtual void update(int up) override;
+    virtual void update(int bUp, int fUp, std::string fileName) override;
 
     virtual void attach() override;
 
     virtual void detach() override;
 
-    int getUpl() const;
+    int getBUpl() const;
 
-    void setUpl(int upl);
+    void setBUpl(int bUpl);
+
+    int getFUpl() const;
+
+    void setFUpl(int fUpl);
+
+    void setCurrentName(const std::string &currentName);
+
+    const std::string &getCurrentName() const;
 
 private:
-    int upl;
+    int bUpl, fUpl;
+    std::string currentName;
 };
 
 
