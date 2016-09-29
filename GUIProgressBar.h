@@ -22,7 +22,6 @@ public:
 
     virtual void detach() override;
 
-
 private:
     WINDOW *progressbar;
     FileManager *subject;
