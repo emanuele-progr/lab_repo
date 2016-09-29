@@ -2,8 +2,8 @@
 #include "FileManager.h"
 #include "GUIProgressBar.h"
 
-void Loading(FileManager *ptr) {
-    ResourceFile *files[14];
+void loading(FileManager *ptr) {
+    ResourceFile *files[16];
     files[0] = new ResourceFile("Resource_001", 2);
     files[1] = new ResourceFile("Resource_009", 4);
     files[2] = new ResourceFile("Resource_021", 3);
@@ -46,7 +46,7 @@ int main() {
     FileManager *ptr = new FileManager;
     GUIProgressBar bar(ptr);
     bar.attach();
-    Loading(ptr);
+    loading(ptr);
 
     return 0;
 }
