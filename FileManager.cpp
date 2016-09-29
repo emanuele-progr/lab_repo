@@ -5,7 +5,7 @@
 #include <iostream>
 #include "FileManager.h"
 
-FileManager::FileManager() : fileLoaded(0) {
+FileManager::FileManager() : fileLoaded(0), bytesLoaded(0) {
 
 }
 
@@ -13,18 +13,20 @@ FileManager::~FileManager() {
 
 }
 
-void FileManager::loadFiles(int numFiles) {
-    if (numFiles < 0) {
-        std::cout << "Error:Invalid file's number" << std::endl;
-    } else {
-        for (int i = 0; i < numFiles; i++) {
-            fileLoaded++;
-
-            //simulo file caricati con dimensione uguale..
-
-            int percentage = (fileLoaded * 100) / numFiles;
-            notify(percentage);
-        }
+void FileManager::loadFiles() {
+    int count = 0;
+    int totBytes = 0;
+    for (auto itr = std::begin(files); itr != std::end(files); itr++) {
+        count++;
+        totBytes += (*itr)->getBytes();
+    }
+    for (auto itr = std::begin(files); itr != std::end(files); itr++) {
+        bytesLoaded += (*itr)->getBytes();
+        fileLoaded++;
+        std::string name = (*itr)->getFileName();
+        int bytesPercentage = (bytesLoaded * 100) / totBytes;
+        int filesPercentage = (fileLoaded * 100) / count;
+        notify(bytesPercentage, filesPercentage, name);
     }
 }
 
@@ -37,9 +39,9 @@ void FileManager::unsubscribe(Observer *o) {
     observers.remove(o);
 }
 
-void FileManager::notify(int percentage) {
+void FileManager::notify(int bytesPercentage, int filesPercentage, std::string fileName) {
     for (auto itr = std::begin(observers); itr != std::end(observers); itr++) {
-        (*itr)->update(percentage);
+        (*itr)->update(bytesPercentage, filesPercentage, fileName);
     }
 }
 
@@ -49,4 +51,22 @@ int FileManager::getFileLoaded() const {
 
 const std::list<Observer *> &FileManager::getObservers() const {
     return observers;
+}
+
+bool FileManager::storeFiles(ResourceFile *f) {
+    if (f->getBytes() <= 0) {
+        std::cout << "Errore nel numero di bytes nel file" << std::endl;
+        return false;
+    }
+    files.push_back(f);
+    return true;
+
+}
+
+int FileManager::getBytesLoaded() const {
+    return bytesLoaded;
+}
+
+const std::list<ResourceFile *> &FileManager::getFiles() const {
+    return files;
 }

@@ -5,14 +5,16 @@
 #ifndef PROGRESSBAR_GUIPROGRESSBAR_H
 #define PROGRESSBAR_GUIPROGRESSBAR_H
 
+#include <list>
 #include "GUIBar.h"
 #include "FileManager.h"
+#include "ResourceFile.h"
 
 class GUIProgressBar : public GUIBar {
 public:
     virtual ~GUIProgressBar();
 
-    GUIProgressBar(FileManager *f);
+    GUIProgressBar(FileManager *s);
 
     virtual void draw() override;
 

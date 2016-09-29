@@ -13,15 +13,6 @@ TEST(FileManagerTest, DefaultConstructor) {
     ASSERT_EQ(0, f.getObservers().size());
 }
 
-TEST(FileManagerTest, TestLoadFiles) {
-    FileManager f;
-    f.loadFiles(0);
-    ASSERT_EQ(0, f.getFileLoaded());
-    f.loadFiles(-5);
-    ASSERT_EQ(0, f.getFileLoaded());
-    f.loadFiles(12);
-    ASSERT_EQ(12, f.getFileLoaded());
-}
 
 TEST(FileManagerTest, TestSubscribe) {
     FileManager f;

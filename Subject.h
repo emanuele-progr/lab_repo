@@ -13,7 +13,7 @@ public:
 
     virtual void unsubscribe(Observer *o)=0;
 
-    virtual void notify(int percentage)=0;
+    virtual void notify(int bytesPercentage, int filesPercentage, std::string fileName)=0;
 };
 
 #endif //PRIMO_SUBJECT_H
