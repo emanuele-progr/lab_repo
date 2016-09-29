@@ -30,7 +30,7 @@ void GUIProgressBar::draw() {
 
     //simulo un ritardo nell'agg.percentuale dovuto al caricamento..
 
-    wtimeout(progressbar, 300);
+    wtimeout(progressbar, 500);
     wattron(progressbar, A_STANDOUT);
     if (GUIBar::getBUpl() < 101) {
         for (int i = 0; i < GUIBar::getBUpl(); i++) {
@@ -39,12 +39,12 @@ void GUIProgressBar::draw() {
         }
 
         wattroff(progressbar, A_STANDOUT);
-        mvwprintw(progressbar, 5, 6, "%d %%", GUIBar::getBUpl());
-        mvwprintw(progressbar, 5, 15, "%d %%", GUIBar::getFUpl());
+        mvwprintw(progressbar, 5, 6, "Bytes percentage %d %%", GUIBar::getBUpl());
+        mvwprintw(progressbar, 6, 6, "File percentage  %d %%", GUIBar::getFUpl());
 
         // display dei file..
 
-        mvwprintw(progressbar, 5, 89, "%s", GUIBar::getCurrentName().c_str());
+        mvwprintw(progressbar, 5, 80, "Current File: %s", GUIBar::getCurrentName().c_str());
         wrefresh(progressbar);
         wgetch(progressbar);
 
