@@ -7,8 +7,6 @@
 
 
 ResourceFile::ResourceFile(std::string name, int b) : FileName(name), bytes(b) {
-
-
 }
 
 const std::string &ResourceFile::getFileName() const {
