@@ -2,6 +2,7 @@
 // Created by emanuele on 18/09/16.
 //
 
+#include <iostream>
 #include "GUIBar.h"
 
 
@@ -22,6 +23,14 @@ void GUIBar::draw() {
 }
 
 void GUIBar::update(int bUp, int fUp, std::string fileName) {
+    if (bUp <= 0) {
+        std::cout << "Impossibile aggiornare bytesUploaded : quantità nulla o negativa" << std::endl;
+        return;
+    }
+    if (fUp <= 0) {
+        std::cout << "Impossibile aggiornare fileUploaded : quantità nulla o negativa" << std::endl;
+        return;
+    }
     bUpl = bUp;
     fUpl = fUp;
     currentName = fileName;
