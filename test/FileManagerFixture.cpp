@@ -31,12 +31,13 @@ protected:
 
 
 TEST_F(FileManagerSuite, FileManagerSuite_Store_Test) {
-    ASSERT_TRUE(f.storeFiles(file1));
+    EXPECT_NO_THROW(f.storeFiles(file1));
     ASSERT_EQ(1, f.getFiles().size());
-    ASSERT_TRUE(f.storeFiles(file2));
+    EXPECT_NO_THROW(f.storeFiles(file2));
     ASSERT_EQ(2, f.getFiles().size());
-    ASSERT_FALSE(f.storeFiles(file3));
-    ASSERT_EQ(2, f.getFiles().size());
+    EXPECT_THROW(f.storeFiles(file3), NegativeOrNullBytesException);
+
+
 }
 
 

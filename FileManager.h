@@ -8,6 +8,7 @@
 
 #include "Subject.h"
 #include "ResourceFile.h"
+#include "ListException.h"
 #include <list>
 #include <string>
 
@@ -28,7 +29,7 @@ public:
 
     int getFileLoaded() const;
 
-    bool storeFiles(ResourceFile *f);
+    void storeFiles(ResourceFile *f) throw(NegativeOrNullBytesException);
 
     const std::list<Observer *> &getObservers() const;
 
