@@ -49,15 +49,17 @@ void GUIProgressBar::draw() {
         wgetch(progressbar);
 
     }
+    refresh();
 
     if (GUIBar::getBUpl() == 100) {
         mvwprintw(progressbar, 6, 40, "LOADING COMPLETE!!!");
         mvprintw(25, 57, "Press any key to continue");
         wrefresh(progressbar);
         getch();
+        endwin();
     }
-    refresh();
-    endwin();
+
+
 }
 
 void GUIProgressBar::attach() {
