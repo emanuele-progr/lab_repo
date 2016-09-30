@@ -6,7 +6,7 @@
 #include "GUIProgressBar.h"
 
 
-GUIProgressBar::GUIProgressBar(FileManager *s) : subject(s) {
+GUIProgressBar::GUIProgressBar(FileManager *s) : GUIBar::GUIBar(s) {
     //inizializzo la finestra per il caricamento...
     initscr();
     curs_set(0);
@@ -62,12 +62,4 @@ void GUIProgressBar::draw() {
 
 }
 
-void GUIProgressBar::attach() {
-    subject->subscribe(this);
-
-}
-
-void GUIProgressBar::detach() {
-    subject->unsubscribe(this);
-}
 

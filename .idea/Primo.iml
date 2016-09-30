@@ -22,6 +22,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Display.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/FileManager.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ListException.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/GUIProgressBar.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/GUIProgressBar.cpp" isTestSource="false" />
     </content>

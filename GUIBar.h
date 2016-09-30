@@ -10,19 +10,20 @@
 #include "Observer.h"
 #include "Display.h"
 #include "FileManager.h"
+#include "ListException.h"
 
 
-
-class GUIBar : public Observer, public Display {
+class GUIBar : public Observer {
 public:
 
-    GUIBar();
+    GUIBar(FileManager *f);
 
     virtual ~GUIBar();
 
-    virtual void draw() override;
+    virtual void draw();
 
-    virtual void update(int bUp, int fUp, std::string fileName) override;
+    virtual void update(int bUp, int fUp, std::string fileName)
+    throw(NegativeOrNullBytesException, NegativeOrNullFilesException) override;
 
     virtual void attach() override;
 
@@ -43,6 +44,7 @@ public:
 private:
     int bUpl, fUpl;
     std::string currentName;
+    FileManager *subject;
 };
 
 

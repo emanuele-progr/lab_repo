@@ -12,7 +12,7 @@ set(SOURCE_FILES
         GUIBar.h
         main.cpp
         Observer.h
-        Subject.h GUIProgressBar.cpp GUIProgressBar.h ResourceFile.cpp ResourceFile.h)
+        Subject.h GUIProgressBar.cpp GUIProgressBar.h ResourceFile.cpp ResourceFile.h ListException.h)
 
 add_subdirectory(test)
 set(SOURCE_FILE FileManager.h FileManager.cpp GUIBar.h GUIBar.cpp GUIProgressBar.h GUIBar.cpp ResourceFile.cpp ResourceFile.h)

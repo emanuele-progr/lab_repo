@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "FileManager.h"
+#include "ListException.h"
 
 FileManager::FileManager() : fileLoaded(0), bytesLoaded(0) {
 
@@ -41,7 +42,14 @@ void FileManager::unsubscribe(Observer *o) {
 
 void FileManager::notify(int bytesPercentage, int filesPercentage, std::string fileName) {
     for (auto itr = std::begin(observers); itr != std::end(observers); itr++) {
-        (*itr)->update(bytesPercentage, filesPercentage, fileName);
+        try {
+            (*itr)->update(bytesPercentage, filesPercentage, fileName);
+        } catch (NegativeOrNullBytesException &m) {
+            std::cout << m.what();
+        }
+        catch (NegativeOrNullFilesException &n) {
+            std::cout << n.what();
+        }
     }
 }
 
@@ -53,13 +61,11 @@ const std::list<Observer *> &FileManager::getObservers() const {
     return observers;
 }
 
-bool FileManager::storeFiles(ResourceFile *f) {
+void FileManager::storeFiles(ResourceFile *f) throw(NegativeOrNullBytesException) {
     if (f->getBytes() <= 0) {
-        std::cout << "Errore nel numero di bytes nel file" << std::endl;
-        return false;
+        throw NegativeOrNullBytesException("Errore nel numero di bytes di alcuni files");
     }
     files.push_back(f);
-    return true;
 
 }
 

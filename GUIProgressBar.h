@@ -10,7 +10,7 @@
 #include "FileManager.h"
 #include "ResourceFile.h"
 
-class GUIProgressBar : public GUIBar {
+class GUIProgressBar : public GUIBar, public Display {
 public:
     virtual ~GUIProgressBar();
 
@@ -18,13 +18,9 @@ public:
 
     virtual void draw() override;
 
-    virtual void attach() override;
-
-    virtual void detach() override;
 
 private:
     WINDOW *progressbar;
-    FileManager *subject;
 };
 
 

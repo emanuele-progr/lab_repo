@@ -4,12 +4,10 @@
 
 #include <iostream>
 #include "GUIBar.h"
+#include "ListException.h"
 
 
-GUIBar::GUIBar() {
-    bUpl = 0;
-    fUpl = 0;
-    currentName = "NoFile";
+GUIBar::GUIBar(FileManager *f) : subject(f), bUpl(0), fUpl(0), currentName("NoFile") {
 }
 
 GUIBar::~GUIBar() {
@@ -22,14 +20,15 @@ void GUIBar::draw() {
 
 }
 
-void GUIBar::update(int bUp, int fUp, std::string fileName) {
+void GUIBar::update(int bUp, int fUp,
+                    std::string fileName) throw(NegativeOrNullBytesException, NegativeOrNullFilesException) {
     if (bUp <= 0) {
-        std::cout << "Impossibile aggiornare bytesUploaded : quantità nulla o negativa" << std::endl;
-        return;
+        throw NegativeOrNullBytesException(
+                "Errore impossibile aggiornare bytesUploaded : quantità di bytes nulla o negativa");
     }
     if (fUp <= 0) {
-        std::cout << "Impossibile aggiornare fileUploaded : quantità nulla o negativa" << std::endl;
-        return;
+        throw NegativeOrNullFilesException(
+                "Errore impossibile aggiornare fileUploaded : quantità files nulla o negativa");
     }
     bUpl = bUp;
     fUpl = fUp;
@@ -37,9 +36,12 @@ void GUIBar::update(int bUp, int fUp, std::string fileName) {
     draw();
 }
 
-void GUIBar::attach() {}
+void GUIBar::attach() {
+    subject->subscribe(this);
+}
 
 void GUIBar::detach() {
+    subject->unsubscribe(this);
 }
 
 int GUIBar::getBUpl() const {

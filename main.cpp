@@ -1,4 +1,5 @@
 
+#include <iostream>
 #include "FileManager.h"
 #include "GUIProgressBar.h"
 
@@ -46,7 +47,11 @@ int main() {
     FileManager *ptr = new FileManager;
     GUIProgressBar bar(ptr);
     bar.attach();
-    loading(ptr);
+    try {
+        loading(ptr);
+    } catch (NegativeOrNullBytesException &m) {
+        std::cout << m.what();
+    }
 
 
     return 0;
