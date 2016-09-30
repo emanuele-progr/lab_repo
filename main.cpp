@@ -48,6 +48,7 @@ int main() {
     bar.attach();
     loading(ptr);
 
+
     return 0;
 }
 
