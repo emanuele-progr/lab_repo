@@ -1,4 +1,5 @@
 # lab_repo
+ProgressBar GUI with Ncurses 
 README ITA
 
 CODICE IN FASE BETA E IN CONTINUO MIGLIORAMENTO.
